@@ -1,0 +1,82 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block extrahead %}
+{{ block.super }}
+<style type="text/css">
+.module table { width:100%; }
+.module table p { padding: 0; margin: 0; }
+.hidden {display:none;}
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="../../../">{% trans "Home" %}</a> &rsaquo; <a href="../../">{% trans "Documentation" %}</a> &rsaquo; {{ opts.verbose_name_plural }}</div>{% endblock %}
+
+{% block title %}{% trans "Documentation" %}: {{ opts.verbose_name_plural }}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+{% block item_title %}
+<h1>{{ opts.verbose_name }}</h1>
+{% endblock item_title %}
+
+{% block item_description %}
+{% endblock item_description %}
+
+{% block item_functions %}
+	<div class="module">
+		<table class="model">
+		<thead>
+		<tr>
+		    <th>{% trans "Field" %}</th>
+		    <th>{% trans "Type" %}</th>
+		    <th>{% trans "Description" %}</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for field in fields %}
+		<tr>
+		    <td>{{ field.verbose }} <span class="hidden">{{ field.name }}</span></td>
+		    <td>{{ field.data_type }}</td>
+		    <td>{% if field.help_text %}{{ field.help_text|safe }}{% endif %}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+		</table>
+	</div>
+	
+	{% if m2m_fields %}
+	<h3>{% trans "Many to many fields" %}</h3>
+	<div class="module">
+		<table class="model">
+		<thead>
+		<tr>
+		    <th>{% trans "Field" %}</th>
+		    <th>{% trans "Type" %}</th>
+		    <th>{% trans "Description" %}</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for field in m2m_fields %}
+		<tr>
+		    <td>{{ field.verbose }} <span class="hidden">{{ field.name }}</span></td>
+		    <td>{{ field.data_type }}</td>
+		    <td>{% if field.help_text %}{{ field.help_text|safe }}{% endif %}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+		</table>	
+	</div>
+		
+	{% endif %}
+	
+	
+	
+{% endblock item_functions %}
+
+{% block item_notes %}
+{% endblock item_notes %}
+
+<p class="small"><a href="../">&lsaquo; {% trans "Back" %}</a></p>
+</div>
+{% endblock %}

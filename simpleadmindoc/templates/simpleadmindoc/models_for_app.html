@@ -1,0 +1,7 @@
+{% if all_models %}
+	<h3>{{name}}</h3>
+
+	{% for model in all_models %}
+		<li><a href="{{model.link}}">{{model.name}}</a></li>
+	{% endfor %}	
+{% endif %}
