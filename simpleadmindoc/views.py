@@ -19,6 +19,7 @@ doc_index = staff_member_required(doc_index)
 
 def model_detail(request, app_label, model_name):
     context = RequestContext(request)
+    context['is_popup'] = '_popup' in request.GET
     # Get the model class.
     try:
         app_mod = models.get_app(app_label)
