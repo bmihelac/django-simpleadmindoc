@@ -25,4 +25,4 @@ Minimal example application is included. Go to `example` folder and run
 Go to django admin and you will see Help in top right corner. 
 Username and password are 'test'.
 
-![simpleadmindoc screenshot](example/simpleadmindoc.jpg)
+![simpleadmindoc screenshot](http://github.com/bmihelac/django-simpleadmindoc/raw/master/example/simpleadmindoc.jpg)
