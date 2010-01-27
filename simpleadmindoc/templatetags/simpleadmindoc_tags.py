@@ -12,4 +12,7 @@ def models_for_app(context, app_label):
     all_models = [{'name': model._meta.verbose_name, 'link': reverse('simpleadmindoc-model-details', 
                 args=(model._meta.app_label, model._meta.module_name)
                 )} for model in models.get_models(app)]
-    return {'all_models': all_models, 'name': app_label}
+    return {'all_models': all_models, 
+        'name': app_label, 
+        'is_popup': context.get('is_popup', 0)
+    }

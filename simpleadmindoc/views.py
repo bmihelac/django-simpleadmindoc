@@ -11,6 +11,7 @@ from django.core import urlresolvers
 
 def doc_index(request):
     context = RequestContext(request)
+    context['is_popup'] = '_popup' in request.GET
     context['app_labels'] = set([model._meta.app_label for model in models.get_models()])
     return render_to_response('simpleadmindoc/index.html', 
         context_instance=context)

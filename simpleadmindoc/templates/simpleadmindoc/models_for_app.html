@@ -1,7 +1,9 @@
 {% if all_models %}
 	<h3>{{name}}</h3>
 
-	{% for model in all_models %}
-		<li><a href="{{model.link}}">{{model.name}}</a></li>
-	{% endfor %}	
+	<ul>
+		{% for model in all_models %}
+			<li><a href="{{model.link}}{% if is_popup %}?_popup=1{% endif %}">{{model.name}}</a></li>
+		{% endfor %}	
+	</ul>
 {% endif %}
