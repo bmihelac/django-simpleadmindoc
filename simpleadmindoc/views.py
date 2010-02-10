@@ -77,6 +77,7 @@ def model_detail(request, app_label, model_name):
     
     templates = ('simpleadmindoc/%s/%s.html' % (app_label, model_name), 
                 'simpleadmindoc/model_detail.html')
+    print templates
     return render_to_response(templates, context_instance=context)
 
     # 

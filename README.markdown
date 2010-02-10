@@ -13,7 +13,7 @@ Getting started
 
 All models are visible by default and for each model fields and many2many fields are displayed.
 If you want to customize help screen for any model create template in templates/simpleadmindoc:  
-`APP_NAME/ModelName.html`
+`APP_NAME/modelname.html`
 
 Example application
 ===============
