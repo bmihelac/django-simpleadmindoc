@@ -26,3 +26,10 @@ Go to django admin and you will see Help in top right corner.
 Username and password are 'test'.
 
 ![simpleadmindoc screenshot](http://github.com/bmihelac/django-simpleadmindoc/raw/master/example/simpleadmindoc.jpg)
+
+TODO
+====
+
+* make possible to add static content
+* display only content for modules that editor have right to view
+* jump to current module in help
