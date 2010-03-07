@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name = "Django Simple admin doc",
+    name = "django-simpleadmindoc",
     version = "0.1",
     author = "Bojan Mihelac",
     author_email = "bmihelac@mihelac.org",
