@@ -9,7 +9,9 @@ class Publication(models.Model):
 
     class Meta:
         ordering = ('title',)
-
+        verbose_name = "Publication"
+        verbose_name_plural = "Publications"
+        
 
 class Article(models.Model):
     headline = models.CharField(verbose_name='Article headline', max_length=100, help_text='Headline will be shown in listing page')
@@ -21,3 +23,5 @@ class Article(models.Model):
     class Meta:
         ordering = ('headline',)
         verbose_name = "Article"
+        verbose_name_plural = "Articles"
+        
