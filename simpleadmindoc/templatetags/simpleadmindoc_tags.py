@@ -2,9 +2,6 @@ from django import template
 from django.db import models
 from django.core.urlresolvers import reverse
 
-from templatetag_sugar.register import tag
-from templatetag_sugar.parser import Name, Variable, Constant, Optional, Model
-
 from simpleadmindoc.generate import get_model
 
 
