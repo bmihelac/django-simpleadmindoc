@@ -2,7 +2,7 @@ from django.core.management.base import AppCommand
 
 
 class Command(AppCommand):
-    help = "Generate sphinx documentation for given apps."
+    help = "Generate sphinx documentation skeleton for given apps."
     
     def handle_app(self, app, **options):
         # check if simpleadmindoc directory is setup
