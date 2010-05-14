@@ -15,7 +15,7 @@ def write(filename, content):
     if not os.path.exists(pathname):
         os.makedirs(pathname)
     f = open(filename, "w")
-    f.write(content)
+    f.write(content.encode('utf-8'))
     f.close()
     
 def get_model(app_label, model_name):
