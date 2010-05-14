@@ -12,7 +12,7 @@ register = template.Library()
 def field_definition(model_opts, field):
     s = []
     model_signature = '%s.%s' % (model_opts.app_label, model_opts.object_name)
-    s.append('.. djangoadmin:attribute:: ' + model_signature + '.' + field.name + ' ' + field.verbose_name)
+    s.append('.. djangoadmin:attribute:: ' + model_signature + '.' + field.name + ' ' + unicode(field.verbose_name))
     s.append('')
     if field.help_text:
         s.append('\t' + unicode(field.help_text).strip())
