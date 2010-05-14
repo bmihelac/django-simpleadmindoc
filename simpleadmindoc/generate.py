@@ -5,8 +5,10 @@ from django.template import Context, Template
 from django.template.loader import select_template
 from django.core.exceptions import ImproperlyConfigured
 
+from django.conf import settings
 
-SIMPLEADMINDOC_PATH = "simpleadmindoc"
+
+SIMPLEADMINDOC_PATH = getattr(settings, 'SIMPLEADMINDOC_PATH', "docs")
 
 def write(filename, content):
     pathname = os.path.split(filename)[0]

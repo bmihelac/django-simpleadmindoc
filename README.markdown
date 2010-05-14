@@ -24,7 +24,7 @@ Getting started
 
 1. Add `simpleadmindoc` to your settings `INSTALLED_APPS`.
 	
-2. Create `simpleadmindoc` folder and and put Sphinx configuration file in it. Here is sample `config.py` file:
+2. Create `docs` folder and and put Sphinx configuration file in it. Here is sample `conf.py` file:
 
 		# -*- coding: utf-8 -*-
 		master_doc = 'index'
@@ -60,9 +60,14 @@ Getting started
 
 	Go to `simpleadmindoc` folder and run:
 	
-		sphinx-build -b html project_path/simpleadmindoc project_path/media/simpleadmindoc/
+		sphinx-build -b html project_path/docs project_path/media/docs/
 
 Write documentation
 -------------------
 
 Generated Sphinx documents can be (of course) edited directly but because `simpleadmindoc` uses standard Django templates to produce documentation skeleton, it should be easier to override this templates for application and model.
+
+Changelog
+---------
+
+* 2010-05-14 default output directory for documentation is `docs`, this can be changed with `SIMPLEADMINDOC_PATH` setting.
