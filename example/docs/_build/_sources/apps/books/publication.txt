@@ -1,7 +1,9 @@
 .. |title| replace:: Publications
 
 |title|
-===========
+=======
+.. djangoadmin:class:: books.Publication Publication
+
 Description of this model. Template for this document is in templates folder: `simpleadmindoc/books/publication.rst`.
 
 You can cross reference other models like :djangoadmin:class:`books.Article`.

@@ -1,7 +1,7 @@
 .. |title| replace:: Articles
 
 |title|
-===========
+=======
 .. djangoadmin:class:: books.Article Article
 
 Fields
