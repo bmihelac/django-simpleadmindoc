@@ -18,8 +18,10 @@ class Command(AppCommand):
             translation.activate(locale)
             
         from django.db import models
-        from simpleadmindoc.generate import generate_model_doc, generate_app_doc, generate_index_doc
+        from simpleadmindoc.generate import generate_model_doc, generate_app_doc, generate_index_doc,\
+                                            generate_apps_doc
         generate_index_doc()
+        generate_apps_doc()
         generate_app_doc(app)
         for model in models.get_models(app):
             generate_model_doc(model)

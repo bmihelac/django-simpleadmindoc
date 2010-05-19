@@ -60,7 +60,15 @@ def index_doc():
     templates = ('simpleadmindoc/index.rst', )
     tmpl = select_template(templates)
     return tmpl.render(ctx)    
-    
+
+def generate_apps_doc():
+    ctx = Context()
+    templates = ('simpleadmindoc/apps.rst', )
+    tmpl = select_template(templates)
+    content = tmpl.render(ctx)    
+    filename = '%s/apps/index.rst' % (SIMPLEADMINDOC_PATH,)
+    write(filename, content)    
+        
 def generate_index_doc():
     filename = '%s/index.rst' % (SIMPLEADMINDOC_PATH,)
     content = index_doc()

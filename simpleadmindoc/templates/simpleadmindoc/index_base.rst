@@ -6,10 +6,9 @@
 {% block toc %}
 .. toctree::
 	:glob:
-	:maxdepth: 2
+	:maxdepth: 3
 
-	apps/*/app
-	*
+	apps/index
 {% endblock toc %}
 {% block notes %}{% endblock notes %}
 {% endspaceless %}
