@@ -6,7 +6,7 @@
 {% endblock description %}{% block toc %}
 .. toctree::
 	:glob:
-	:maxdepth: 2
+	:maxdepth: 1
 
 	*/app
 {% endblock toc %}{% block notes %}
