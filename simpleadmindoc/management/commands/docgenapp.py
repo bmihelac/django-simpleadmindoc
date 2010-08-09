@@ -27,10 +27,11 @@ class Command(AppCommand):
 
         from django.db import models
         from simpleadmindoc.generate import generate_model_doc, generate_app_doc, generate_index_doc,\
-                                            generate_apps_doc
+                                            generate_apps_doc, generate_static_doc
         generate_index_doc()
         generate_apps_doc()
         generate_app_doc(app)
+        generate_static_doc()
         for model in models.get_models(app):
             if "%s.%s" % (model._meta.app_label, model.__name__) not in excludes:
                 generate_model_doc(model)

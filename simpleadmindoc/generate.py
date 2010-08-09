@@ -1,9 +1,11 @@
 import os, os.path
+import re
 
 from django.db import models
 from django.template import Context, Template
-from django.template.loader import select_template
+from django.template.loader import select_template, get_template
 from django.core.exceptions import ImproperlyConfigured
+from django.template.loaders.app_directories import app_template_dirs    
 
 from django.conf import settings
 
@@ -72,4 +74,29 @@ def generate_apps_doc():
 def generate_index_doc():
     filename = '%s/index.rst' % (SIMPLEADMINDOC_PATH,)
     content = index_doc()
-    write(filename, content)    
+    write(filename, content)
+    
+def generate_static_doc():
+    """
+    GTemplates in folder ``simpleadmindoc`` would be processed through template engine and result would be 
+    saved in ``docs`` folder keeping the folder structure.
+    """
+    templatedirs = [d for d in
+                settings.TEMPLATE_DIRS + app_template_dirs if os.path.isdir(d)]
+                
+    template_names = set()
+
+    for templatedir in templatedirs:
+        for dirpath, subdirs, filenames in os.walk(templatedir + '/simpleadmindoc_static'):
+            for f in [f for f in filenames if not f.startswith(".")]:
+                path = os.path.join(dirpath, f)
+                name = path.split(templatedir)[1][1:]
+                template_names.add(name)
+                
+    for name in template_names:
+        tmpl = get_template(name)
+        ctx = Context()
+        content = tmpl.render(ctx)
+        filename = '%s/%s' % (SIMPLEADMINDOC_PATH, name.replace('simpleadmindoc_static/', ''))
+        write(filename, content)
+    
