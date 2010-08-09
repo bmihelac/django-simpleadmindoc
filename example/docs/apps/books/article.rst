@@ -1,11 +1,11 @@
 .. |title| replace:: Articles
+.. |fields_title| replace:: All fields
 
 |title|
 =======
 .. djangoadmin:class:: books.Article Article
 
-Fields
-------
+|fields_title|
 
 
 .. djangoadmin:attribute:: books.Article.id ID

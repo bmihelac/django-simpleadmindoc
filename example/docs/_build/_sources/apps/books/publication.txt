@@ -1,4 +1,5 @@
 .. |title| replace:: Publications
+.. |fields_title| replace:: All fields
 
 |title|
 =======
@@ -20,8 +21,7 @@ Or attributes in other models like :djangoadmin:attribute:`books.Article.headlin
 
 		
 
-Fields
-------
+|fields_title|
 
 
 .. djangoadmin:attribute:: books.Publication.id ID
