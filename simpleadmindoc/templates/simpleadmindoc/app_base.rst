@@ -2,7 +2,9 @@
 .. |title| replace:: {{ app_label }}
 
 {% block title %}|title|
-======={% endblock title %}{% block description %}
+======={% endblock title %}
+.. djangoadmin:app:: {{ app_label }} {{ app_label }}
+{% block description %}
 {% endblock description %}{% block toc %}
 .. toctree::
 	:glob:

@@ -53,15 +53,18 @@ class DjangoAdminDomain(Domain):
     name = 'djangoadmin'
     label = 'DjangoAdmin'
     object_types = {
+        'app': ObjType(l_('Django app'), 'app'),
         'class': ObjType(l_('Django model class'), 'class'),
         'attribute': ObjType(l_('Django model attribute'),   'attribute'),
     }
 
     directives = {
+        'app': DjangoAdminObject,
         'class': DjangoAdminObject,
         'attribute':   DjangoAdminObject,
     }
     roles = {
+        'app' :  DjangoAdminXRefRole(fix_parens=False),
         'class' :  DjangoAdminXRefRole(fix_parens=False),
         'attribute': DjangoAdminXRefRole(),
     }
