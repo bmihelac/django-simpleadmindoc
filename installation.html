@@ -1,0 +1,149 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation and configuration &mdash; django-simpleadmindoc v0.3 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-simpleadmindoc v0.3 documentation" href="index.html" />
+    <link rel="next" title="First steps with simpleadmindoc" href="first_steps.html" />
+    <link rel="prev" title="django-simpleadmindoc" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="first_steps.html" title="First steps with simpleadmindoc"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="django-simpleadmindoc"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-and-configuration">
+<h1>Installation and configuration<a class="headerlink" href="#installation-and-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sphinx 1.0.1</li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Add <cite>simpleadmindoc</cite> to your settings <cite>INSTALLED_APPS</cite>.</p>
+<p>Create <cite>docs</cite> folder and and put Sphinx configuration file in it. Here is sample <cite>conf.py</cite> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="n">master_doc</span> <span class="o">=</span> <span class="s">&#39;index&#39;</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="s">u&#39;ExampleApp&#39;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s">u&#39;2010, example team&#39;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+<span class="n">release</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+
+<span class="c">#language = None</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;sphinxdoc&#39;</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;simpleadmindoc.ext.djangoadmindoc&quot;</span><span class="p">]</span>
+
+<span class="n">rst_epilog</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">.. |project_name| replace:: Example application admin documentation</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="c">#html_show_sourcelink = False</span>
+<span class="c">#html_logo = &quot;html-logo.jpg&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation and configuration</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">django-simpleadmindoc</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="first_steps.html"
+                        title="next chapter">First steps with simpleadmindoc</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="first_steps.html" title="First steps with simpleadmindoc"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="django-simpleadmindoc"
+             >previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Bojan Mihelac.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Templates &mdash; django-simpleadmindoc v0.3 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-simpleadmindoc v0.3 documentation" href="index.html" />
+    <link rel="next" title="Templatetags" href="templatetags.html" />
+    <link rel="prev" title="Sphinx domain djangoadmin" href="djangoadmin_domain.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="templatetags.html" title="Templatetags"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="djangoadmin_domain.html" title="Sphinx domain djangoadmin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="templates">
+<h1>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="index-document">
+<h2>Index document<a class="headerlink" href="#index-document" title="Permalink to this headline">¶</a></h2>
+<p>Index document render following template:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">templates</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;simpleadmindoc/index.rst&#39;</span><span class="p">,</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Default implementation is:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">|project_name|</span>
+<span class="x">==============</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">description</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="nv">description</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">toc</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. toctree::</span>
+<span class="x">  :glob:</span>
+<span class="x">  :maxdepth: 3</span>
+
+<span class="x">  apps/index</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">toc</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">notes</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="nv">notes</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="application-documents">
+<h2>Application documents<a class="headerlink" href="#application-documents" title="Permalink to this headline">¶</a></h2>
+<p>Application documentation select template from:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">templates</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;simpleadmindoc/</span><span class="si">%s</span><span class="s">/app.rst&#39;</span> <span class="o">%</span> <span class="n">app_label</span><span class="p">,</span>
+            <span class="s">&#39;simpleadmindoc/app.rst&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Default implementation is:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. |title| replace:: </span><span class="cp">{{</span> <span class="nv">app_label</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span><span class="x">|title|</span>
+<span class="x">=======</span><span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. djangoadmin:app:: </span><span class="cp">{{</span> <span class="nv">app_label</span> <span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">app_label</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">description</span> <span class="cp">%}{%</span> <span class="k">block</span> <span class="nv">toc</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. toctree::</span>
+<span class="x">  :glob:</span>
+
+<span class="x">  *</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">toc</span> <span class="cp">%}{%</span> <span class="k">block</span> <span class="nv">notes</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">notes</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documents">
+<h2>Model documents<a class="headerlink" href="#model-documents" title="Permalink to this headline">¶</a></h2>
+<p>Index document render following template:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">templates</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;simpleadmindoc/</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">.rst&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
+            <span class="s">&#39;simpleadmindoc/</span><span class="si">%s</span><span class="s">/model.rst&#39;</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span><span class="p">,</span>
+            <span class="s">&#39;simpleadmindoc/model.rst&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Default implementation is:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">load</span> <span class="nv">simpleadmindoc_tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">load</span> <span class="nv">i18n</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. |title| replace:: </span><span class="cp">{{</span>  <span class="nv">opts.verbose_name_plural</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">.. |fields_title| replace:: </span><span class="cp">{%</span> <span class="k">trans</span> <span class="s2">&quot;All fields&quot;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span><span class="x">|title|</span>
+<span class="x">=======</span><span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">.. djangoadmin:class:: </span><span class="cp">{{</span><span class="nv">opts.app_label</span><span class="cp">}}</span><span class="x">.</span><span class="cp">{{</span><span class="nv">opts.object_name</span><span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span><span class="nv">opts.verbose_name</span><span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">description</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="nv">description</span> <span class="cp">%}{%</span> <span class="k">block</span> <span class="nv">model_fields</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">|fields_title|</span>
+<span class="cp">{%</span> <span class="k">fields_for_model</span> <span class="nv">opts</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="nv">model_fields</span> <span class="cp">%}{%</span> <span class="k">block</span> <span class="nv">notes</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">notes</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Templates</a><ul>
+<li><a class="reference internal" href="#index-document">Index document</a></li>
+<li><a class="reference internal" href="#application-documents">Application documents</a></li>
+<li><a class="reference internal" href="#model-documents">Model documents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="djangoadmin_domain.html"
+                        title="previous chapter">Sphinx domain djangoadmin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="templatetags.html"
+                        title="next chapter">Templatetags</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/templates.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="templatetags.html" title="Templatetags"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="djangoadmin_domain.html" title="Sphinx domain djangoadmin"
+             >previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Bojan Mihelac.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

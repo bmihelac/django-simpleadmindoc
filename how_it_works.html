@@ -1,0 +1,128 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How it works &mdash; django-simpleadmindoc v0.3 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-simpleadmindoc v0.3 documentation" href="index.html" />
+    <link rel="next" title="Sphinx domain djangoadmin" href="djangoadmin_domain.html" />
+    <link rel="prev" title="First steps with simpleadmindoc" href="first_steps.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="djangoadmin_domain.html" title="Sphinx domain djangoadmin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="first_steps.html" title="First steps with simpleadmindoc"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-it-works">
+<h1>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h1>
+<p><strong>django-simpleadmindoc</strong> defines <a class="reference external" href="http://sphinx.pocoo.org/domains.html">Sphinx domain</a> for django admin.
+This allows cross referencing apps, models and attributes in documentation.
+More information about djangoadmin domain in <a class="reference internal" href="djangoadmin_domain.html"><em>here</em></a>.</p>
+<p><strong>django-simpleadmindoc</strong> <cite>docgenapp</cite> management command create skeleton for documentation.
+It would create skeleton for following documents:</p>
+<ul class="simple">
+<li><cite>index</cite> document</li>
+<li>for every application <cite>app</cite> document in <cite>apps</cite> directory</li>
+<li>for every model in application <cite>modelname</cite> document in <cite>apps</cite> directory</li>
+</ul>
+<p><cite>docgenapp</cite> uses standard django templates to generate skeleton documents.
+This allows developer to extend and change django templates to suits their needs, per model, project or application.
+More documentation about available templates is available <a class="reference internal" href="templates.html"><em>here</em></a>.</p>
+<p><cite>docgenapp</cite> also process documents found in <cite>simpleadmindoc_static</cite> template directories and save
+them to <cite>doc</cite> folder, keeping the directory structure. It would look for documents both in <cite>TEMPLATE_DIRS</cite> and
+individual <cite>app_directories</cite> directories.</p>
+<p>Skeleton documentation are ready to be processed by Sphinx:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sphinx-build -b html docs /path_where_to_put_html_dcumentation/
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="first_steps.html"
+                        title="previous chapter">First steps with simpleadmindoc</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="djangoadmin_domain.html"
+                        title="next chapter">Sphinx domain djangoadmin</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/how_it_works.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="djangoadmin_domain.html" title="Sphinx domain djangoadmin"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="first_steps.html" title="First steps with simpleadmindoc"
+             >previous</a> |</li>
+        <li><a href="index.html">django-simpleadmindoc v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Bojan Mihelac.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
