@@ -11,7 +11,7 @@ Configuration
 
 Add `simpleadmindoc` to your settings `INSTALLED_APPS`.
 
-Create `docs` folder and and put Sphinx configuration file in it. Here is sample `conf.py` file:
+Create `docs` folder and and put Sphinx configuration file in it. Here is sample `conf.py` file: ::
 
   # -*- coding: utf-8 -*-
   master_doc = 'index'

@@ -5,7 +5,7 @@ First steps with simpleadmindoc
 
   ./manage.py docgenapp APP1
 
-This will create documentation skeleton for application ``APP1`` in `docs` folder: ::
+This will create documentation skeleton in `docs` folder: ::
 
   index.rst
   apps/APP1/app.rst
