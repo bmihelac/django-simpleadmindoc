@@ -13,9 +13,7 @@ Example application
 Small example application and sample documentation for it is included. It is in `example` folder, and built
 HTML documentation is in  `example/simpleadmindoc/_build`.
 
-.. image:: /raw/master/example/simpleadmindoc.jpg
-
-  screenshot of generated doc for example application in HTML format
+http://github.com/bmihelac/django-simpleadmindoc/raw/master/example/simpleadmindoc.jpg - screenshot of generated doc for example application in HTML format
 
 Requirements
 ------------
