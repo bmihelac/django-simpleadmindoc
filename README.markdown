@@ -15,9 +15,7 @@ Small example application and sample documentation for it is included. It is in 
 Requirements
 ------------
 
-* Sphinx 1.0
-
-In the time of writing, *Sphinx 1.0* is not released yet, it can be downloaded from http://bitbucket.org/birkenfeld/sphinx/
+* Sphinx 1.0.1
 
 Getting started
 ---------------

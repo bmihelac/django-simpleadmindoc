@@ -91,4 +91,4 @@ class DjangoAdminDomain(Domain):
 
     def get_objects(self):
         for refname, (docname, type, verbose_name) in self.data['objects'].iteritems():
-            yield (refname, type, docname, refname, 1)
+            yield (refname, refname, type, docname, refname, 1)
