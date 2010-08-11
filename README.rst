@@ -21,3 +21,8 @@ Requirements
 ------------
 
 * Sphinx 1.0.1
+
+Documentation
+-------------
+
+http://bmihelac.github.com/django-simpleadmindoc/index.html
