@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
-import re
-import string
-
 from docutils import nodes
 
 from sphinx import addnodes
 from sphinx.roles import XRefRole
-from sphinx.locale import l_, _
+from sphinx.locale import l_
 from sphinx.domains import Domain, ObjType
 from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
-from sphinx.util.docfields import Field, TypedField
 
 
 def parse_directive(d):
@@ -34,7 +30,6 @@ class DjangoAdminObject(ObjectDescription):
             signode['ids'].append(targetname)
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
-            objects = self.env.domaindata['djangoadmin']['objects']
         self.env.domaindata['djangoadmin']['objects'][name] = (self.env.docname, self.objtype, verbose_name)
         return name
 
