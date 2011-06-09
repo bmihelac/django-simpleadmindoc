@@ -1,3 +1,4 @@
 *.pyc
 TODO-internal.txt
 docs/_build
+example/docs/_build
