@@ -2,9 +2,9 @@
 master_doc = 'index'
 
 project = u'django-simpleadmindoc'
-copyright = u'2010, Bojan Mihelac'
+copyright = u'2011, Bojan Mihelac'
 version = '0'
-release = '0.3'
+release = '0.4'
 
 # language = 'en'
 html_theme = 'nature'
