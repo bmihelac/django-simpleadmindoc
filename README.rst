@@ -1,6 +1,6 @@
-=====================
-django-simpleadmindoc
-=====================
+===========================
+django-simpleadmindoc 0.4.0
+===========================
 
 Django-simpleadmindoc is a tool that helps creating documentation for
 editors and administrators of django based website.
@@ -20,6 +20,22 @@ Main features:
 Goal of simpleadmindoc is to make writing of documentation for editors and
 administrators fast, flexible and easy.
 
+Usage
+-----
+
+.. code-block:: rest
+
+  .. djangoadmin:model:: books.Article
+
+  Reference models :djangoadmin:model:`books.Article` or attributes
+  :djangoadmin:attribute:`books.Article.headline`.
+
+``djangoadmin:model`` directive in first line will autodocument all available
+fields in ``Article`` model that is in ``books`` app.
+
+References in second line will be replaced with verbose names and linked
+to respective model / attribute.
+
 Configuration
 -------------
 
@@ -38,13 +54,11 @@ Configuration
 
 3. Add `simpleadmindoc` to your settings `INSTALLED_APPS`.
 
-Usage
------
 
 Example application
 -------------------
 
-Small example application and sample generated documentation for it is included.
+Small example application is included.
 
 Requirements
 ------------
