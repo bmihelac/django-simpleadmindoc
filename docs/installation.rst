@@ -9,26 +9,17 @@ Requirements
 Configuration
 -------------
 
-Add `simpleadmindoc` to your settings `INSTALLED_APPS`.
+1. Add djangoadmin domain to sphinx coniguration (``conf.py``)::
 
-Create `docs` folder and and put Sphinx configuration file in it. Here is sample `conf.py` file: ::
+    extensions = ["simpleadmindoc.ext.djangoadmindoc"]
 
-  # -*- coding: utf-8 -*-
-  master_doc = 'index'
+2. Configure sphinx so it have have access to django website.
+   Add website directory to ``sys.path`` and setup environment variable 
+   ``DJANGO_SETTINGS_MODULE``::
 
-  project = u'ExampleApp'
-  copyright = u'2010, example team'
-  version = '1'
-  release = '1.0'
+        import sys, os
+        sys.path.insert(0, os.path.abspath('../..'))
+        sys.path.insert(0, os.path.abspath('..'))
+        os.environ['DJANGO_SETTINGS_MODULE'] = 'example.settings'
 
-  #language = None
-  html_theme = 'sphinxdoc'
-
-  extensions = ["simpleadmindoc.ext.djangoadmindoc"]
-
-  rst_epilog = """
-  .. |project_name| replace:: Example application admin documentation
-  """
-
-  #html_show_sourcelink = False
-  #html_logo = "html-logo.jpg"
+3. Add `simpleadmindoc` to your settings `INSTALLED_APPS`.

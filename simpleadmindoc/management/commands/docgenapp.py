@@ -7,11 +7,14 @@ class Command(AppCommand):
     help = "Generate sphinx documentation skeleton for given apps."
     option_list = AppCommand.option_list + (
             make_option('--locale', '-l', default=None, dest='locale',
-                help='Use given locale'),
+                help='Activate given locale, verbose names for models and' +
+                'attributes will be in given locale. '),
             make_option('--exclude-from', default=None, dest='exclude_filename',
-                help='read exclude patterns from FILE', metavar="FILE"),
+                help='Exclude patterns for models that you do not want'+
+                'documentation to be generated for.', metavar="FILE"),
             make_option('--path', default='docs', dest='path',
-                help="all existing files would be overwritten"),
+                help="Specify path where to save skeleton documentation." +
+                "All existing files would be overwritten."),
         )
 
     def handle_app(self, app, **options):
