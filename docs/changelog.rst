@@ -5,10 +5,10 @@ Changelog
 .. contents::
     :local:
 
-.. _version-0.1.0
+.. _version-0.4.0
 
 0.1.0
 =====
 
-Major refactor of how simpleadmindoc.
+Major refactor
 
