@@ -7,7 +7,7 @@ version = '0'
 release = '0.4'
 
 # language = 'en'
-html_theme = 'nature'
+#html_theme = 'nature'
 
 rst_epilog = """
 .. |project_name| replace:: django-simpleadmindoc, InformatikaMihelac
