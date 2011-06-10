@@ -24,7 +24,7 @@ administrators fast, flexible and easy.
 Usage
 -----
 
-.. code-block:: rest
+::
 
   .. djangoadmin:model:: books.Article
 
