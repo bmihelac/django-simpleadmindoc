@@ -10,8 +10,10 @@ class Command(AppCommand):
                 help='Use given locale'),
             make_option('--exclude-from', default=None, dest='exclude_filename',
                 help='read exclude patterns from FILE', metavar="FILE"),
-        )    
-    
+            make_option('--path', default='docs', dest='path',
+                help="all existing files would be overwritten"),
+        )
+
     def handle_app(self, app, **options):
         # check if simpleadmindoc directory is setup
         locale = options.get('locale', None)
@@ -26,13 +28,11 @@ class Command(AppCommand):
                 excludes.append(line.strip())
 
         from django.db import models
-        from simpleadmindoc.generate import generate_model_doc, generate_app_doc, generate_index_doc,\
-                                            generate_apps_doc, generate_static_doc
-        generate_index_doc()
-        generate_apps_doc()
+        from simpleadmindoc.generate import (generate_model_doc,
+                generate_app_doc)
+
         generate_app_doc(app)
-        generate_static_doc()
         for model in models.get_models(app):
             if "%s.%s" % (model._meta.app_label, model.__name__) not in excludes:
                 generate_model_doc(model)
-        
+
