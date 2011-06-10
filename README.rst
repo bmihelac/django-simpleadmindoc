@@ -10,11 +10,12 @@ Simpleadmindoc is based on and produces documents for
 
 Main features:
 
-1. ``djangoadmin`` Sphinx domain allows autodocumenting models.
-   It also allowd referencing models and fields inside
+1. ``djangoadmin`` Sphinx domain allows autodocumenting models,
+
+2. ``djangoadmin`` also allows referencing models and fields inside
    documentation while taking care of using verbose names,
 
-2. ``docgenapp`` django management command allows fast creating of skeleton
+3. ``docgenapp`` django management command allows fast creating of skeleton
    documentation for applications inside website.
 
 Goal of simpleadmindoc is to make writing of documentation for editors and
