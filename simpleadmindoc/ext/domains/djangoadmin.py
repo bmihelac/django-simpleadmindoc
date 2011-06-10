@@ -31,13 +31,6 @@ class DjangoAdminCurrentModel(Directive):
         return []
 
 
-def parse_directive(d):
-    """
-    Parses a directive signature. Returns (directive, verbose_name) string tuple.
-    """
-    return d.split(' ', 1)
-
-
 class DjangoAdminObject(ObjectDescription):
 
     def get_verbose_name(self, sig):
