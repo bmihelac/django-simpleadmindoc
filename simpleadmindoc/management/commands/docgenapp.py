@@ -34,8 +34,9 @@ class Command(AppCommand):
         from simpleadmindoc.generate import (generate_model_doc,
                 generate_app_doc)
 
+        path = options.get('path')
         generate_app_doc(app)
         for model in models.get_models(app):
             if "%s.%s" % (model._meta.app_label, model.__name__) not in excludes:
-                generate_model_doc(model)
+                generate_model_doc(model, path)
 
