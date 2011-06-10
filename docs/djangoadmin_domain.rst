@@ -1,31 +1,64 @@
-Sphinx domain djangoadmin
-=========================
+==================
+djangoadmin domain
+==================
 
-Django app
+Signatures are always in form::
+
+    applabel_ModelName_attribute
+
+Roles
+-----
+
+Verbose name of model or model attribute is used as text for link,
+unless explicit title is specified.
+
+Model role
+^^^^^^^^^^
+
+.. code-block:: rest
+
+    You can cross reference other model with :djangoadmin:model:`books.Article`.
+
+Model attribute role
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: rest
+
+    Attributes in other models like :djangoadmin:attribute:`books.Article.headline`.
+
+Directives
 ----------
 
-.. code-block:: rest
-
-  .. djangoadmin:app:: books Books application
-
-Django modeladmin class
------------------------
+Model
+^^^^^
 
 .. code-block:: rest
 
-  .. djangoadmin:class:: books.Article Article
+  .. djangoadmin:model:: books.Article
 
-Django model attribute
-----------------------
+     Description of Article model.
 
-.. code-block:: rest
+All model fields would be added automatically.
 
-  .. djangoadmin:attribute:: books.Publication.title Publication title
-
-Cross referencing
------------------
+Model attribute
+^^^^^^^^^^^^^^^
 
 .. code-block:: rest
 
-	You can cross reference other model with :djangoadmin:class:`books.Article`.
-	Or attributes in other models like :djangoadmin:attribute:`books.Article.headline`.
+  .. djangoadmin:attribute:: books.Publication.title
+
+Model attributes are automatically added when Model directive is called.
+
+Current model
+^^^^^^^^^^^^^
+
+.. code-block:: rest
+
+  .. djangoadmin:currentmodel:: books.Article
+
+  Reference :djangoadmin:attribute:`headline`.
+
+Sets current djangoadmin:model.
+Allows using roles without app.model signature.
+
+

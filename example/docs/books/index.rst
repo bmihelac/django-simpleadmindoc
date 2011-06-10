@@ -1,0 +1,8 @@
+
+books
+=====
+
+.. toctree::
+    :glob:
+
+    *
