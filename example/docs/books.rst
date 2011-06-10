@@ -14,6 +14,10 @@ Non documented attribute :djangoadmin:attribute:`books.Publication.title`.
 
    Description of the model.
 
+.. djangoadmin:model:: books.Publication
+
+   Description of the model.
+
 Current model
 -------------
 

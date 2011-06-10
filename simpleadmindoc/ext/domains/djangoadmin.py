@@ -11,7 +11,8 @@ from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
 from sphinx.util.compat import Directive
 
-from simpleadmindoc.util import model_attribute_name, model_name
+from simpleadmindoc.util import (model_attribute_name, model_name,
+        model_attributes)
 
 
 class DjangoAdminCurrentModel(Directive):
@@ -66,11 +67,13 @@ class DjangoAdminModel(DjangoAdminObject):
     def run(self):
         indexnode, node = super(DjangoAdminModel, self).run()
 
-        lst = [
-                '.. djangoadmin:attribute:: books.Article.headline',
-                '',
-                '   Description of attributte.',
-                ]
+        sig = self.arguments[0]
+        lst = []
+        for name, opts in model_attributes(*sig.split('.')).items():
+            lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
+            lst.append('')
+            lst.append("   %s" % opts['description'])
+            lst.append('')
         text = '\n'.join(lst)
         new_doc = new_document('temp-string', self.state.document.settings)
         parser = Parser()
