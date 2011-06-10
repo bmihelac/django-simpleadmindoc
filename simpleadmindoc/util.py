@@ -7,7 +7,7 @@ def get_model(app_label, model_name):
     for model in models.get_models(models.get_app(app_label)):
         if model_name == model._meta.object_name:
             return model
-    raise "Model %s.%s does not exist" % (app_label, model_name)
+    raise ValueError("Model %s.%s does not exist" % (app_label, model_name))
 
 def model_attribute_name(app_label, model_name, attribute):
     model = get_model(app_label, model_name)
