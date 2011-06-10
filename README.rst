@@ -32,7 +32,7 @@ Usage
   :djangoadmin:attribute:`books.Article.headline`.
 
 ``djangoadmin:model`` directive in first line will autodocument all available
-fields in ``Article`` model that is in ``books`` app.
+fields in ``Article`` model that is in the ``books`` app.
 
 References in second line will be replaced with verbose names and linked
 to respective model / attribute.
@@ -75,3 +75,4 @@ Contribute
 ----------
 
 Fork + pull.
+Report issues: https://github.com/bmihelac/django-simpleadmindoc/issues
