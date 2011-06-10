@@ -48,7 +48,9 @@ class DjangoAdminObject(ObjectDescription):
             signode['ids'].append(targetname)
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
-        self.env.domaindata['djangoadmin']['objects'][name] = (self.env.docname, self.objtype, name)
+        self.env.domaindata['djangoadmin']['objects'][name] = (
+                self.env.docname,
+                self.objtype, name)
         return name
 
 
@@ -66,7 +68,6 @@ class DjangoAdminModel(DjangoAdminObject):
 
     def run(self):
         indexnode, node = super(DjangoAdminModel, self).run()
-
         sig = self.arguments[0]
         lst = []
         for name, opts in model_attributes(*sig.split('.')).items():
@@ -91,10 +92,12 @@ class DjangoAdminXRefRole(XRefRole):
         raise ValueError
 
     def process_link(self, env, refnode, has_explicit_title, title, target):
+        current_model = env.temp_data.get('djangoadmin:model', None)
+        if current_model:
+            target = '%s.%s' % (current_model, target)
         title, target = super(DjangoAdminXRefRole, self).process_link(env,
                 refnode, has_explicit_title, title, target)
         if not has_explicit_title:
-            current_model = env.temp_data.get('djangoadmin:model', None)
             if current_model:
                 title = "%s.%s" % (current_model, title)
             title = self.get_verbose_name(title)
