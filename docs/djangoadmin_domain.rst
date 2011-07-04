@@ -40,6 +40,16 @@ Model
 
 All model fields would be added automatically.
 
+Options
+
+* Normally, all model attributes will be documented. If you wish to exclude
+  some attributes, use ``exclude`` option::
+
+.. code-block:: rest
+
+  .. djangoadmin:model:: books.Article
+     :exclude: id, title
+
 Model attribute
 ^^^^^^^^^^^^^^^
 

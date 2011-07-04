@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from docutils import nodes
-from docutils.parsers.rst import Parser
+from docutils.parsers.rst import Parser, directives
 from docutils.utils import new_document
 
 from sphinx import addnodes
@@ -63,6 +63,11 @@ class DjangoAdminModelAttribute(DjangoAdminObject):
 
 class DjangoAdminModel(DjangoAdminObject):
 
+    optional_arguments = 1
+    option_spec = {
+        'exclude': directives.unchanged,
+    }
+
     def get_verbose_name(self, sig):
         return model_name(*sig.split('.'))
 
@@ -70,7 +75,14 @@ class DjangoAdminModel(DjangoAdminObject):
         indexnode, node = super(DjangoAdminModel, self).run()
         sig = self.arguments[0]
         lst = []
-        for name, opts in model_attributes(*sig.split('.')).items():
+
+        exclude = [
+                a.strip() for a in self.options['exclude'].split(',')
+                ]
+        app_label, model_name = sig.split('.')
+        for name, opts in model_attributes(app_label, model_name).items():
+            if name in exclude:
+                continue
             lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
             lst.append('')
             lst.append("   %s" % opts['description'])
