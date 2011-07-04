@@ -127,6 +127,14 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
     def get_verbose_name(self, sig):
         return model_attribute_name(*sig.split('.'))
 
+from django.utils.translation import ugettext as _
+
+def ugettext_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    txt = _(text)
+    node = nodes.inline(txt, txt)
+    return [node], []
+
+
 
 class DjangoAdminDomain(Domain):
     """DjangoAdmin domain."""
@@ -145,6 +153,7 @@ class DjangoAdminDomain(Domain):
     roles = {
         'model' :  DjangoAdminModelRole(),
         'attribute': DjangoAdminModelAttributeRole(),
+        'unicode': ugettext_role,
     }
     initial_data = {
         'objects': {},  # fullname -> docname, objtype

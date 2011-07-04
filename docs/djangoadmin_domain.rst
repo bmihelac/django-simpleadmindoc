@@ -26,6 +26,13 @@ Model attribute role
 
     Attributes in other models like :djangoadmin:attribute:`books.Article.headline`.
 
+Unicode role
+^^^^^^^^^^^^
+
+.. code-block:: rest
+
+    Translation using Django I18n machinery, :djangoadmin:unicode:`yes`.
+
 Directives
 ----------
 
