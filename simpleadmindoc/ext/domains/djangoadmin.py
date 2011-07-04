@@ -85,7 +85,7 @@ class DjangoAdminModel(DjangoAdminObject):
                 continue
             lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
             lst.append('')
-            lst.append("   %s" % opts['description'])
+            lst.append("   %s" % unicode(opts['description']))
             lst.append('')
         text = '\n'.join(lst)
         new_doc = new_document('temp-string', self.state.document.settings)
