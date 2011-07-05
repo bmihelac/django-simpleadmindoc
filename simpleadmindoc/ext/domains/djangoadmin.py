@@ -10,6 +10,7 @@ from sphinx.domains import Domain, ObjType
 from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
 from sphinx.util.compat import Directive
+from django.utils.translation import ugettext as _
 
 from simpleadmindoc.util import (model_attribute_name, model_name,
         model_attributes)
@@ -127,7 +128,6 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
     def get_verbose_name(self, sig):
         return model_attribute_name(*sig.split('.'))
 
-from django.utils.translation import ugettext as _
 
 def ugettext_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     txt = _(text)
