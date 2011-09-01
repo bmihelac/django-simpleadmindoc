@@ -78,7 +78,7 @@ class DjangoAdminModel(DjangoAdminObject):
         lst = []
 
         exclude = [
-                a.strip() for a in self.options['exclude'].split(',')
+                a.strip() for a in self.options.get('exclude', '').split(',')
                 ]
         app_label, model_name = sig.split('.')
         for name, opts in model_attributes(app_label, model_name).items():
