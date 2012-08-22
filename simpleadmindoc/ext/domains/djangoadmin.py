@@ -67,6 +67,7 @@ class DjangoAdminModel(DjangoAdminObject):
     optional_arguments = 1
     option_spec = {
         'exclude': directives.unchanged,
+        'noautodoc': directives.flag,
     }
 
     def get_verbose_name(self, sig):
@@ -77,24 +78,25 @@ class DjangoAdminModel(DjangoAdminObject):
         sig = self.arguments[0]
         lst = []
 
-        exclude = [
-                a.strip() for a in self.options.get('exclude', '').split(',')
-                ]
-        app_label, model_name = sig.split('.')
-        for name, opts in model_attributes(app_label, model_name).items():
-            if name in exclude:
-                continue
-            lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
-            lst.append('')
-            lst.append("   %s" % unicode(opts['description']))
-            lst.append('')
-        text = '\n'.join(lst)
-        new_doc = new_document('temp-string', self.state.document.settings)
-        parser = Parser()
-        parser.parse(text, new_doc)
-        container = nodes.container()
-        container.extend(new_doc.children)
-        node[1].extend(container)
+        if not 'noautodoc' in self.options:
+            exclude = [
+                    a.strip() for a in self.options.get('exclude', '').split(',')
+                    ]
+            app_label, model_name = sig.split('.')
+            for name, opts in model_attributes(app_label, model_name).items():
+                if name in exclude:
+                    continue
+                lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
+                lst.append('')
+                lst.append("   %s" % unicode(opts['description']))
+                lst.append('')
+            text = '\n'.join(lst)
+            new_doc = new_document('temp-string', self.state.document.settings)
+            parser = Parser()
+            parser.parse(text, new_doc)
+            container = nodes.container()
+            container.extend(new_doc.children)
+            node[1].extend(container)
 
         return [indexnode, node]
 

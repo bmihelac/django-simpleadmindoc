@@ -32,3 +32,8 @@ generated for.
 Specify path where to save skeleton documentation.
 All existing files would be overwritten.
 
+
+docgenmodel
+-----------
+
+Generate sphinx documentation skeleton for given model and print it on screen.

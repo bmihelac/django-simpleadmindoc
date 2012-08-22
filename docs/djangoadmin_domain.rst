@@ -57,6 +57,17 @@ Options
   .. djangoadmin:model:: books.Article
      :exclude: id, title
 
+* Turn off autodocumenting with ``noautodoc`` flag.
+
+.. code-block:: rest
+
+  .. djangoadmin:model:: books.Article
+     :noautodoc:
+
+     .. djangoadmin:attribute:: books.Article.creation_date
+
+        Creation date.
+
 Model attribute
 ^^^^^^^^^^^^^^^
 
