@@ -1,3 +1,4 @@
+import ipdb
 # -*- coding: utf-8 -*-
 from docutils import nodes
 from docutils.parsers.rst import Parser, directives
@@ -63,7 +64,6 @@ class DjangoAdminModelAttribute(DjangoAdminObject):
 
 class DjangoAdminModel(DjangoAdminObject):
 
-
     def get_verbose_name(self, sig):
         return model_name(*sig.split('.'))
 
@@ -107,10 +107,21 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
         return model_attribute_name(*sig.split('.'))
 
 
-class DjangoUnicodeRole(XRefRole):
+class DjangoModelVerboseNameRole(object):
 
-    def get_verbose_name(self, sig):
-        return _(sig)
+    def __call__(domain, typ, rawtext,\
+                 text, lineno, inliner, options={}, content=[]):
+        verbose_name = model_name(*text.split('.'))
+        node = nodes.inline(verbose_name, verbose_name)
+        return [node], []
+
+class DjangoUnicodeRole(object):
+
+    def __call__(domain, typ, rawtext,\
+                 text, lineno, inliner, options={}, content=[]):
+        verbose_name = _(text)
+        node = nodes.inline(verbose_name, verbose_name)
+        return [node], []
 
 
 class DjangoAdminDomain(Domain):
@@ -129,6 +140,7 @@ class DjangoAdminDomain(Domain):
     }
     roles = {
         'model' :  DjangoAdminModelRole(),
+        'modelname' :  DjangoModelVerboseNameRole(),
         'attribute': DjangoAdminModelAttributeRole(),
         'unicode': DjangoUnicodeRole(),
     }
