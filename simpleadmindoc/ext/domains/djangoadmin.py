@@ -49,9 +49,6 @@ class DjangoAdminObject(ObjectDescription):
             signode['ids'].append(targetname)
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
-        self.env.domaindata['djangoadmin']['objects'][name] = (
-                self.env.docname,
-                self.objtype, name)
         return name
 
 
@@ -61,47 +58,24 @@ class DjangoAdminModelAttribute(DjangoAdminObject):
         return model_attribute_name(*sig.split('.'))
 
 
-
-class DjangoAdminModel(DjangoAdminObject):
-
-    optional_arguments = 1
-    option_spec = {
-        'exclude': directives.unchanged,
-        'noautodoc': directives.flag,
-    }
+class DjangoAdminModel(Directive):
+    required_arguments = 1
 
     def get_verbose_name(self, sig):
         return model_name(*sig.split('.'))
 
     def run(self):
-        indexnode, node = super(DjangoAdminModel, self).run()
-        sig = self.arguments[0]
-        lst = []
+        env = self.state.document.settings.env
 
-        if not 'noautodoc' in self.options:
-            exclude = [
-                    a.strip() for a in self.options.get('exclude', '').split(',')
-                    ]
-            app_label, model_name = sig.split('.')
-            for name, opts in model_attributes(app_label, model_name).items():
-                if name in exclude:
-                    continue
-                lst.append(".. djangoadmin:attribute:: %s.%s" % (sig, name))
-                lst.append('')
-                lst.append("   %s" % unicode(opts['description']))
-                lst.append('')
-            text = '\n'.join(lst)
-            new_doc = new_document('temp-string', self.state.document.settings)
-            parser = Parser()
-            parser.parse(text, new_doc)
-            container = nodes.container()
-            container.extend(new_doc.children)
-            node[1].extend(container)
+        targetid = "model-%s" % self.arguments[0]
+        targetnode = nodes.target('', '', ids=[targetid])
 
-        return [indexnode, node]
+        return [targetnode]
 
 
 class DjangoAdminXRefRole(XRefRole):
+    innernodeclass = nodes.inline
+    nodeclass = nodes.inline
 
     def get_verbose_name(self, sig):
         raise ValueError
@@ -132,6 +106,8 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
 
 
 class DjangoUnicodeRole(XRefRole):
+    innernodeclass = nodes.inline
+    nodeclass = nodes.inline
 
     def get_verbose_name(self, sig):
         return _(sig)
