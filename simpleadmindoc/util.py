@@ -11,12 +11,12 @@ def get_model(app_label, model_name):
 def model_attribute_name(app_label, model_name, attribute):
     model = get_model(app_label, model_name)
     name = model._meta.get_field_by_name(attribute)[0].verbose_name
-    return name
+    return unicode(name)
 
 def model_name(app_label, model_name, plural=False):
     model = get_model(app_label, model_name)
     name = model._meta.verbose_name_plural if plural else model._meta.verbose_name
-    return name
+    return unicode(name)
 
 def model_attributes(app_label, model_name):
     model = get_model(app_label, model_name)
