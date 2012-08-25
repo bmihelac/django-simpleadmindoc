@@ -49,6 +49,11 @@ class DjangoAdminObject(ObjectDescription):
             signode['ids'].append(targetname)
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
+
+        self.env.domaindata['djangoadmin']['objects'][name] = (
+                self.env.docname,
+                self.objtype,
+                name)
         return name
 
 
