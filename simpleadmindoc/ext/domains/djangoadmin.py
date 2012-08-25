@@ -49,11 +49,9 @@ class DjangoAdminObject(ObjectDescription):
             signode['ids'].append(targetname)
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
-
         self.env.domaindata['djangoadmin']['objects'][name] = (
                 self.env.docname,
-                self.objtype,
-                name)
+                self.objtype, name)
         return name
 
 
@@ -63,24 +61,23 @@ class DjangoAdminModelAttribute(DjangoAdminObject):
         return model_attribute_name(*sig.split('.'))
 
 
-class DjangoAdminModel(Directive):
-    required_arguments = 1
+class DjangoAdminModel(DjangoAdminObject):
+
 
     def get_verbose_name(self, sig):
         return model_name(*sig.split('.'))
 
     def run(self):
-        env = self.state.document.settings.env
-
         targetid = "model-%s" % self.arguments[0]
         targetnode = nodes.target('', '', ids=[targetid])
 
-        return [targetnode]
+        indexnode, node = super(DjangoAdminModel, self).run()
+
+        return [indexnode, targetnode]
 
 
 class DjangoAdminXRefRole(XRefRole):
     innernodeclass = nodes.inline
-    nodeclass = nodes.inline
 
     def get_verbose_name(self, sig):
         raise ValueError
@@ -111,8 +108,6 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
 
 
 class DjangoUnicodeRole(XRefRole):
-    innernodeclass = nodes.inline
-    nodeclass = nodes.inline
 
     def get_verbose_name(self, sig):
         return _(sig)
