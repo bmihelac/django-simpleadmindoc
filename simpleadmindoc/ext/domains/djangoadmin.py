@@ -76,6 +76,12 @@ class DjangoAdminModel(DjangoAdminObject):
         return [indexnode, targetnode]
 
 
+class DjangoTemplate(DjangoAdminObject):
+
+    def get_verbose_name(self, sig):
+        return sig
+
+
 class DjangoAdminXRefRole(XRefRole):
     innernodeclass = nodes.inline
 
@@ -112,7 +118,7 @@ class DjangoModelVerboseNameRole(object):
     def __call__(domain, typ, rawtext,\
                  text, lineno, inliner, options={}, content=[]):
         verbose_name = model_name(*text.split('.'))
-        node = nodes.inline(verbose_name, verbose_name)
+        node = nodes.emphasis(verbose_name, verbose_name)
         return [node], []
 
 class DjangoUnicodeRole(object):
@@ -120,7 +126,7 @@ class DjangoUnicodeRole(object):
     def __call__(domain, typ, rawtext,\
                  text, lineno, inliner, options={}, content=[]):
         verbose_name = _(text)
-        node = nodes.inline(verbose_name, verbose_name)
+        node = nodes.emphasis(verbose_name, verbose_name)
         return [node], []
 
 
@@ -137,6 +143,7 @@ class DjangoAdminDomain(Domain):
         'model': DjangoAdminModel,
         'attribute':   DjangoAdminModelAttribute,
         'currentmodel': DjangoAdminCurrentModel,
+        'template': DjangoTemplate,
     }
     roles = {
         'model' :  DjangoAdminModelRole(),
