@@ -131,7 +131,7 @@ class DjangoAdminModelAttributeRole(DjangoAdminXRefRole):
         return model_attribute_name(*sig.split('.'))
 
 
-class DjangoUnicodeRole(XRefRole):
+class DjangoUnicodeRole(DjangoAdminXRefRole):
 
     def get_verbose_name(self, sig):
         return _(sig)
