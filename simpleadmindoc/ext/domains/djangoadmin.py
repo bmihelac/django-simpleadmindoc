@@ -13,7 +13,7 @@ from sphinx.util.compat import Directive
 from django.utils.translation import ugettext as _
 
 from simpleadmindoc.util import (model_attribute_name, model_name,
-        model_attributes)
+                                 model_attributes)
 
 
 class DjangoAdminCurrentModel(Directive):
@@ -50,8 +50,8 @@ class DjangoAdminObject(ObjectDescription):
             signode['first'] = not self.names
             self.state.document.note_explicit_target(signode)
         self.env.domaindata['djangoadmin']['objects'][name] = (
-                self.env.docname,
-                self.objtype, name)
+            self.env.docname,
+            self.objtype, name)
         return name
 
 
@@ -59,7 +59,6 @@ class DjangoAdminModelAttribute(DjangoAdminObject):
 
     def get_verbose_name(self, sig):
         return model_attribute_name(*sig.split('.'))
-
 
 
 class DjangoAdminModel(DjangoAdminObject):
@@ -80,8 +79,8 @@ class DjangoAdminModel(DjangoAdminObject):
 
         if not 'noautodoc' in self.options:
             exclude = [
-                    a.strip() for a in self.options.get('exclude', '').split(',')
-                    ]
+                a.strip() for a in self.options.get('exclude', '').split(',')
+            ]
             app_label, model_name = sig.split('.')
             for name, opts in model_attributes(app_label, model_name).items():
                 if name in exclude:
@@ -110,8 +109,9 @@ class DjangoAdminXRefRole(XRefRole):
         current_model = env.temp_data.get('djangoadmin:model', None)
         if current_model:
             target = '%s.%s' % (current_model, target)
-        title, target = super(DjangoAdminXRefRole, self).process_link(env,
-                refnode, has_explicit_title, title, target)
+        title, target = super(DjangoAdminXRefRole, self).process_link(
+            env,
+            refnode, has_explicit_title, title, target)
         if not has_explicit_title:
             if current_model:
                 title = "%s.%s" % (current_model, title)
@@ -152,7 +152,7 @@ class DjangoAdminDomain(Domain):
         'currentmodel': DjangoAdminCurrentModel,
     }
     roles = {
-        'model' :  DjangoAdminModelRole(),
+        'model':  DjangoAdminModelRole(),
         'attribute': DjangoAdminModelAttributeRole(),
         'unicode': DjangoUnicodeRole(),
     }
@@ -178,5 +178,6 @@ class DjangoAdminDomain(Domain):
                             contnode, obj[2])
 
     def get_objects(self):
-        for refname, (docname, type, verbose_name) in self.data['objects'].iteritems():
+        items = self.data['objects'].iteritems()
+        for refname, (docname, type, verbose_name) in items:
             yield (refname, refname, type, docname, refname, 1)
