@@ -102,12 +102,6 @@ class DjangoAdminModel(DjangoAdminObject):
 
 class DjangoAdminXRefRole(XRefRole):
 
-    def __init__(self, fix_parens=False, lowercase=False,
-                 nodeclass=None, innernodeclass=None, warn_dangling=False):
-        super(DjangoAdminXRefRole, self).__init__(
-            fix_parens, lowercase,
-            nodes.generated, nodes.generated, warn_dangling)
-
     def get_verbose_name(self, sig):
         raise ValueError
 
