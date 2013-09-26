@@ -14,6 +14,18 @@ def rst_title(title, level="="):
 
 
 @register.simple_tag
+def rst_model_title(app_label, object_name, level="="):
+    """
+    RST verbose model title.
+    """
+    title = ":djangoadmin:model:`%s.%s`" % (
+        app_label,
+        object_name
+    )
+    return rst_title(title, level)
+
+
+@register.simple_tag
 def render_model_attributes(app_label, model_name):
     lst = []
     for name, opts in model_attributes(app_label, model_name).items():

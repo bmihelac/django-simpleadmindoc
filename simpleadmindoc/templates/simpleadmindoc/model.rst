@@ -1,5 +1,5 @@
 {% load simpleadmindoc_tags %}
-{% rst_title opts.verbose_name_plural %}
+{% rst_model_title opts.app_label opts.object_name %}
 
 .. djangoadmin:model:: {{opts.app_label}}.{{opts.object_name}}
    :noautodoc:
